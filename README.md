@@ -40,4 +40,5 @@ Within ```drf-api-permissions-postgres``, use ```python manage.py runserver``` a
 
 ## Change Log
 
+1.0: *Permissions and Postgres database setup complet* - 23 Mar 2021
 0.1: *Working on basic wiring* - 21 Mar 2021

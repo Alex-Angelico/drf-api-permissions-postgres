@@ -8,7 +8,7 @@ class Jet(models.Model):
   country_origin = models.CharField(max_length=64)
   description = models.TextField(default='')
   engine_count = models.IntegerField()
-  added_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+  added_by = models.ForeignKey(User, on_delete=models.CASCADE)
   added = models.DateTimeField(auto_now_add=True)
   updated = models.DateTimeField(auto_now=True)
 

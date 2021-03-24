@@ -9,8 +9,14 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import environ
 from pathlib import Path
+
+env = environ.Env(
+    DEBUG=(bool, False)
+)
+		
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +26,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jqq+hk_7cqq3d#9m&wr_tf-2spmlv1e$82^iw(jlb0*-=&pbau'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+# ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS'))
+ALLOWED_HOSTS = [ 'localhost', '0.0.0.0', '127.0.0.1' ]
+
 
 
 # Application definition
@@ -37,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'jets.apps.JetsConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -74,10 +85,14 @@ WSGI_APPLICATION = 'military_stuff.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+	'default': {
+		'ENGINE': 'django.db.backends.postgresql',
+		'NAME': 'postgres',
+		'USER': 'admin',
+		'PASSWORD': '123',
+		'HOST': 'db',
+		'PORT': 5432,
+	}
 }
 
 
@@ -118,3 +133,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES' : [
+        'rest_framework.permissions.IsAuthenticated',
+        ]
+}
