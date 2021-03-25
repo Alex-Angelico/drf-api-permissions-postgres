@@ -6,7 +6,7 @@ from .serializers import JetSerializer
 
 # Create your views here.
 
-class JetListView(generics.ListAPIView):
+class JetListView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Jet.objects.all()
     serializer_class = JetSerializer

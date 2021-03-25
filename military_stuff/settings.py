@@ -15,7 +15,7 @@ from pathlib import Path
 env = environ.Env(
     DEBUG=(bool, False)
 )
-		
+
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,10 +31,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG')
 
-# ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
-# ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS'))
-ALLOWED_HOSTS = [ 'localhost', '0.0.0.0', '127.0.0.1' ]
-
+ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS'))
 
 
 # Application definition
@@ -85,14 +82,14 @@ WSGI_APPLICATION = 'military_stuff.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.postgresql',
-		'NAME': 'postgres',
-		'USER': 'admin',
-		'PASSWORD': '123',
-		'HOST': 'db',
-		'PORT': 5432,
-	}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+                'USER': 'admin',
+                'PASSWORD': '123',
+                'HOST': 'db',
+                'PORT': 5432,
+    }
 }
 
 
@@ -135,7 +132,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES' : [
+    'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-        ]
+    ]
 }
+
+LOGIN_REDIRECT_URL = 'jet_list'
