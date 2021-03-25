@@ -34,11 +34,12 @@ Open VSCode
 
 Navigate to location of cloned repository.
 
-Within ```drf-api-permissions-postgres``, use ```python manage.py runserver``` and navigate to the generated IP address.
+Within `drf-api-permissions-postgres`, use `docker-compose up -d` and navigate to `localhost:8000/api/v1/jets/` or `0.0.0.0:8000/api/v1/jets/`.
 
 ----
 
 ## Change Log
 
+1.0.5: *Fixed permissions and login rediect* - 24 Mar 2021  
+1.0: *Permissions and Postgres database setup complete* - 23 Mar 2021  
 0.1: *Working on basic wiring* - 21 Mar 2021
-# drf-api-permissions-postgres
