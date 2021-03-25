@@ -34,7 +34,7 @@ Open VSCode
 
 Navigate to location of cloned repository.
 
-Within ```drf-api-permissions-postgres``, use ```python manage.py runserver``` and navigate to the generated IP address.
+Within `drf-api-permissions-postgres`, use `python manage.py runserver` and navigate to the generated IP address.
 
 ----
 
